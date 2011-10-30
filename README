@@ -1,0 +1,11 @@
+
+Sailing rating calculator.
+by PicciMario <mario.piccinelli@gmail.com>
+
+Options:
+-h          this help
+-f file     file containing the rating table
+
+The rating table must be a CSV file in the form:
+   boat class, rating coefficient
+
