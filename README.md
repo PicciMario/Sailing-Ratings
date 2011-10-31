@@ -17,8 +17,11 @@ using the provided ratings file (iseo.dat), you can type:
 and see:
 
 [...]
+
 Melges 24        -0:10:00    (+0:50:00 * 0.90 = +0:45:00)  
+
 Mousse 99        --------    (+1:00:00 * 0.75 = +0:45:00)  <---- ref. boat
+
 [...]
 
 So, you know that, if your race is 1h long and you arrive no more than 
