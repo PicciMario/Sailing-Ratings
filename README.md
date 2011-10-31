@@ -32,15 +32,18 @@ So, you know that, if your race is 1h long and you arrive no more than
   ./rating.py -f <rating_file>
 
 Options:
+
 * -h          this help
 * -f file     file containing the rating table
 * -r value    reference rating (default: 0.75)
 
 Race length in real time for the reference boat
 (if more than one are present they are added):
+
 * -s value    seconds
 * -m value    minutes
 * -t value    hours
+
 Default: 1h
 
 The rating table must be a CSV file in the form:
