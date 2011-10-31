@@ -8,6 +8,13 @@ def usage():
 	print("Options:")
 	print("-h          this help")
 	print("-f file     file containing the rating table")
+	print("-r value    reference rating (default: 0.75)")
+	print("")
+	print("Race length in real time for the reference boat")
+	print("(if more than one are present they are added):")
+	print("-s value    seconds")
+	print("-m value    minutes")
+	print("-t value    hours")
 	print("")
 	print("The rating table must be a CSV file in the form:")
 	print("   boat class, rating coefficient")
@@ -15,11 +22,11 @@ def usage():
 
 # read command line options
 ratingsFile = None
-seconds = 60 * 60
+seconds = 0
 refrating = 0.75
 
 try:
-	opts, args = getopt.getopt(sys.argv[1:], "hf:r:")
+	opts, args = getopt.getopt(sys.argv[1:], "hf:r:s:m:t:")
 except getopt.GetoptError:
 	usage()
 	sys.exit(0)
@@ -35,18 +42,46 @@ for o,a in opts:
 			refrating = float(a)
 		except:
 			usage()
-			print("Reference rating must be numeric.\n")
+			print("ERROR: Reference rating must be numeric.\n")
+			sys.exit(1)
+	elif o == "-s":
+		try:
+			newSeconds = float(a)
+			seconds = seconds + newSeconds
+		except:
+			usage()
+			print("ERROR: Seconds must be numeric integer.\n")
+			sys.exit(1)
+	elif o == "-m":
+		try:
+			newMinutes = float(a)
+			seconds = seconds + (newMinutes * 60)
+		except:
+			usage()
+			print("ERROR: Minutes must be numeric integer.\n")
+			sys.exit(1)
+	elif o == "-t":
+		try:
+			newHours = float(a)
+			seconds = seconds + (newHours * 3600)
+		except:
+			usage()
+			print("ERROR: Hours must be numeric integer.\n")
 			sys.exit(1)
 	
+# race length defaults to 1 h
+if (seconds == 0):
+	seconds = 3600
+
 # check existence of ratings file
 if (ratingsFile == None):
 	usage()
-	print("You must provide a valid ratings file from command line.\n")
+	print("ERROR: You must provide a valid ratings file from command line.\n")
 	sys.exit(1)
 
 if (os.path.isfile(ratingsFile) == False):
 	usage()
-	print("The ratings file you provided does not exist.\n")
+	print("ERROR: The ratings file you provided does not exist.\n")
 	sys.exit(1)
 
 # import ratings table from csv (boat type, rating)
