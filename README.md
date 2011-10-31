@@ -12,7 +12,9 @@ compensation.
 For example, if you are racing a 1h race on a Mousse 99 (rating 0.75), 
 using the provided ratings file (iseo.dat), you can type:
 
-  ./rating.py -f iseo.dat -r 0.75 -t 1
+<blockquote>
+./rating.py -f iseo.dat -r 0.75 -t 1
+</blockquote>
 
 and see:
 
@@ -29,7 +31,9 @@ So, you know that, if your race is 1h long and you arrive no more than
 
 ## Usage: 
 
-  ./rating.py -f <rating_file>
+<blockquote>
+./rating.py -f rating_file
+</blockquote>
 
 Options:
 
